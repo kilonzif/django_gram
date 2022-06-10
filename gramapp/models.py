@@ -1,4 +1,3 @@
-from distutils.command.upload import upload
 from django.db import models
 from django.contrib.auth.models import User
 
@@ -11,7 +10,8 @@ class Profile(models.Model):
 
 
 class Post(models.Model):
-    image = models.ImageField(upload_to='gram_pics')
+    post_image = models.ImageField(upload_to='gram_pics')
+    caption = models.CharField(max_length=300,blank=True)
     created_at = models.DateTimeField(auto_now_add=True)
     user_id= models.ForeignKey(Profile,on_delete=models.CASCADE)
 

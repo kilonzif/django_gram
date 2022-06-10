@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+
+{% block title %} User Profile Page {% endblock %}
+
+{% block body %}
+<div class="container mt-5 mb-3">
+  <div class="row">
+
+    <div class="col-6">
+    <h1>User Profile</h1>
+    <!-- <p>{{ user.username }}</p> -->
+
+    <h2>{{ my_profile.bio }}</h2>
+    <h2>{{ my_profile.user.username }}</h2>
+    {% if my_profile.profile_picture %}
+    <img src="{{ my_profile.profile_picture.url }}"  alt="Profile image">
+
+    {% else %}
+    <p>No Image</p>
+
+    {% endif %}
+    </div>
+    <div class="col-6">
+            <h4>Profile Update</h4>
+            <form action="/update_profile/" method="POST"> 
+                {% csrf_token %}
+              <div class="container mt-5">
+              <div class="mb-3">
+                <label for="Bio" class="form-label">Bio</label>
+                <textarea type="text" class="form-control" id="bio" name="bio">
+                    </textarea>
+              </div>
+              <div class="mb-3">
+                <label for="password" class="form-label">Profile Picture</label>
+                <input type="file" class="form-control" id="profile_picture" name="profile_picture">
+              </div>
+              <br>
+              <button type="submit" class="btn btn-primary">Submit</button>
+            </div>
+            </form>
+    </div>
+</div>
+</div>
+
+
+
+{% endblock %}

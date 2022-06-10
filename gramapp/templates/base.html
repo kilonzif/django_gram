@@ -1,3 +1,4 @@
+{% load staticfiles %}
 <!doctype html>
 <html lang="en">
   <head>
@@ -11,6 +12,9 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
   <title> {% block title %} {% endblock %} </title> 
+  <style> {% block css %} {% endblock %} </style> 
+  <link rel="stylesheet" type="css/text" href="{% static 'gramapp/index.css' % }">
+  
 
   </head>
   <body>      
@@ -37,7 +41,7 @@
                 <a class="nav-link {% block profileactive %} {% endblock profileactive %}" href="/profile/">Profile</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="/logout/">Logout</a>
+                <a class="nav-link" href="/signout/">Logout</a>
               </li>
               {% else %}
               <li class="nav-item">
