@@ -1,0 +1,46 @@
+{% extends 'base.html' %} {% block body %}
+<div class="container mt-5 mb-3">
+  <h1>View Post Page</h1>
+
+  <div>
+    <div>
+      <div class="row">
+        <div class="col-md-6">
+          <img src="{{post.post_image.url}}" alt="post_image" />
+          <p>{{post.caption}}</p>
+        </div>
+        <div class="col-md-6">
+          <!-- comments -->
+          <a href="{%url 'add_post_comment' post.id%}" class="btn btn-success"
+            >Add comment</a
+          >
+
+          {% if not liked %}
+          <a href="{%url 'like_post' post.id%}" class="btn btn-primary">Like</a>
+          {%else%}
+          <a href="{%url 'like_post' post.id%}" class="btn btn-danger"
+            >Unlike</a
+          >
+          {% endif %}
+
+          <p class="mt-4">Number of likes : {{likes_count}}</p>
+
+          <h3>Post comments</h3>
+          <ul>
+            {% for comment in post_comments %}
+
+            <li>
+              {{comment.comment_text}} -- by
+              <a href="{%url 'user_profile' comment.user_id.id %}"
+                >{{comment.user_id.username}}</a
+              >
+            </li>
+
+            {% endfor %}
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

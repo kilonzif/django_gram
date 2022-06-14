@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block title %} User Profile Page {% endblock %}
+
+{% block body %}
+<div class="container mt-5 mb-3">
+  <div class="row">
+
+    <div class="col-6">
+    <h1>User Profile</h1>
+    <!-- <p>{{ user.username }}</p> -->
+
+    <h2>{{ my_profile.bio }}</h2>
+    <h2>{{ my_profile.user.username }}</h2>
+    {% if my_profile.profile_picture %}
+    <img src="{{ my_profile.profile_picture.url }}"  alt="Profile image">
+
+    {% else %}
+    <p>No Image</p>
+
+    {% endif %}
+    </div>
+ 
+</div>
+</div>
+
+
+
+{% endblock %}

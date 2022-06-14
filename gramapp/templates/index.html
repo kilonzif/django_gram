@@ -1,9 +1,26 @@
-{% extends 'base.html' %}
-
-
-{% block body %}
+{% extends 'base.html' %} {% block body %}
 <div class="container mt-5 mb-3">
-    <h1> Index Page</h1>
+  <h1>Home Page</h1>
 
+  <div>
+    <a href="add_post" class="btn btn-success">Add Post</a>
+  </div>
+
+  <div>
+    {% for post in posts %}
+    <!-- display post data -->
+    <div>
+      <div class="row">
+        <div class="col-md-6">
+          <img src="{{post.post_image.url}}" alt="post_image" />
+          <p>{{post.caption}}</p>
+        </div>
+        <div class="col-md-6">
+          <a href="{% url 'view_post' post.id %}">view post</a>
+        </div>
+      </div>
     </div>
+    {% endfor %}
+  </div>
+</div>
 {% endblock %}

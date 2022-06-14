@@ -1,0 +1,14 @@
+{% extends 'base.html' %} {% block body %}
+<div class="container mt-5 mb-3">
+  <h1>Add Post comment Page</h1>
+
+  <div class="form_container">
+    <form action="{%url 'add_post_comment'  post.id%}" method="post">
+      {% csrf_token %}
+      <div class="col-6 offset 3 mb-3">{{form.comment_text}}</div>
+
+      <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+  </div>
+</div>
+{% endblock %}

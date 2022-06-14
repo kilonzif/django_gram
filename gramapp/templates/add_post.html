@@ -1,0 +1,19 @@
+{% extends 'base.html' %} {% block body %}
+<div class="container mt-5 mb-3">
+  <h1>Add Post Page</h1>
+
+  <div class="form_container">
+    <form
+      action="{%url 'add_post' %}"
+      method="post"
+      enctype="multipart/form-data"
+    >
+      {% csrf_token %}
+      <div class="col-6 offset 3 mb-3">{{form.post_image}}</div>
+      <div class="col-6 offset 3 mb-3">{{form.caption}}</div>
+
+      <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+  </div>
+</div>
+{% endblock %}

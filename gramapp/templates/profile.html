@@ -20,7 +20,8 @@
 
     {% endif %}
     </div>
-    <div class="col-6">
+  {%if my_profile.user == request.user %}
+   <div class="col-6">
             <h4>Profile Update</h4>
             <form action="/update_profile/" method="POST"> 
                 {% csrf_token %}
@@ -39,6 +40,7 @@
             </div>
             </form>
     </div>
+  {% endif %}
 </div>
 </div>
 
